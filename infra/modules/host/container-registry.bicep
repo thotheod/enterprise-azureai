@@ -46,7 +46,7 @@ resource managedIdentityProxy 'Microsoft.ManagedIdentity/userAssignedIdentities@
   name: proxyManagedIdentityName
 }
 
-resource managedIdentityChatapp 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' existing = {
+resource managedIdentityChatapp 'Microsoft.ManagedIdentity/userAssignedIdentities@2018-11-30' existing = if ( !empty(chatappManagedIdentityName) )  {
   name: chatappManagedIdentityName
 }
 

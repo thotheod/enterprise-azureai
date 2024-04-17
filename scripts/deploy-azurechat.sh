@@ -8,7 +8,7 @@ EOF
 
 echo "deploy AzureChat = $DEPLOY_AZURE_CHATAPP"
     
-if [ $DEPLOY_AZURE_CHATAPP ]
+if [ "$DEPLOY_AZURE_CHATAPP" = "false" ]        # The previous condition just checks if the variable is set and not empty, regardless of its value. By adding "$DEPLOY_AZURE_CHATAPP" inside double quotes and using the = operator for string comparison, you ensure that the conditional block is only executed when the value of $DEPLOY_AZURE_CHATAPP is exactly "false"
 then
     echo "checking app registration"
     ./scripts/appreg.sh
