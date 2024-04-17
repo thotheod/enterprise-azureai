@@ -12,6 +12,7 @@ if [ $? -eq 0 ];
 then
 
     displayName="Enterprise-AzureAI-ChatApp-$RESOURCE_TOKEN"
+    echo "displayName: $displayName"
     app=$(az ad app list --display-name $displayName --output json | jq -r '.[0].appId // empty')
 
     if [ -z $app ];
