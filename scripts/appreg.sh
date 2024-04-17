@@ -12,7 +12,9 @@ if [ $? -eq 0 ];
 then
 
     displayName="Enterprise-AzureAI-ChatApp-$RESOURCE_TOKEN"
-    echo "displayName: $displayName"
+    
+    test=$(az ad app list --display-name $displayName --output json)
+    echo "> > > > test: $test"
     app=$(az ad app list --display-name $displayName --output json | jq -r '.[0].appId // empty')
 
     if [ -z $app ];
@@ -29,6 +31,7 @@ then
 
         echo "New App registration $displayName created successfully..."
 
+        echo "> > > app: $app"
         echo "Create Secret Credentials"
         cred=$(az ad app credential reset --id $(echo $app | jq -r '.appId') \
                                         --display-name "azurechat-secret" \
