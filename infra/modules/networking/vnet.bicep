@@ -163,6 +163,12 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
           delegations: webServerFarmDelegation
         }
       }
+      {
+        name: 'AzureBastionSubnet'
+        properties: {
+          addressPrefix: '10.0.5.0/24'
+        }
+      }
     ]
   }
 
